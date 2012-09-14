@@ -58,12 +58,10 @@
 	$query = new SolrQuery();
 
 	$q = $_REQUEST["q"];
-	//if (!isset($q)) {
-	//	$q = "*";
-	//}
+	
 	if (isset($q) && $q != "") {
 		$query->setQuery($q);
-		//$query->setQuery('title:('.$q.') OR description:('.$q.')');
+		
 
 		$query->setStart(0);
 
@@ -95,7 +93,7 @@
 				$title = $doc["title"][0];
 				//links is a mutlivalue field
 				$link = $doc["links"][0];
-
+				//fetch the document id
 				$key = $doc["id"];
 
 				//check for highlighting and replace description
@@ -106,7 +104,7 @@
 
 				?>
 				<li>
-						<h4><a class="title" href="<?=$link; ?>"><?=$title;?></a></h4>
+						<h2><a class="title" href="<?=$link; ?>"><?=$title;?></a></h2>
 						<p class="description"><?=$description;?>
 						<br />
 						<a title="<?=$title;?>" class="title" href="<?=$link; ?>"></a>
